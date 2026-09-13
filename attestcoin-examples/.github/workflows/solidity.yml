@@ -1,0 +1,95 @@
+---
+name: solidity
+
+"on":
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+permissions: read-all
+
+jobs:
+  forge-build:
+    runs-on: ubuntu-26.04
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install foundry
+        run: |
+          export FOUNDRY_DIR="$HOME/.foundry"
+          curl -L https://foundry.paradigm.xyz | bash
+          ~/.foundry/bin/foundryup
+
+      - name: Install forge-std
+        run: git clone --depth 1 https://github.com/foundry-rs/forge-std lib/forge-std
+
+      - name: Install Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: 'yarn'
+      - run: npm install -g yarn
+
+      - name: Install dependencies
+        run: yarn install --ignore-engines
+
+      - name: Compile and test smart contracts
+        run: |
+          echo "INFO: forge remappings (bridge)"
+          ~/.foundry/bin/forge remappings --root bridge || true
+          echo "INFO: forge remappings (loan)"
+          ~/.foundry/bin/forge remappings --root loan || true
+          ls -la node_modules/@gluwa/asc-contracts/contracts || true
+          ls -la node_modules/@gluwa/asc-contracts/contracts/readability || true
+          ls -la node_modules/@gluwa/asc-contracts/contracts/common || true
+
+          ~/.foundry/bin/forge build --root bridge
+          ~/.foundry/bin/forge build --root loan
+          ~/.foundry/bin/forge test --root bridge
+          ~/.foundry/bin/forge test --root loan
+
+  check-abi-on-disk:
+    runs-on: ubuntu-26.04
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install Solidity compiler
+        run: |
+          sudo .github/install-solidity-compiler.sh
+
+      - name: Install Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: 'yarn'
+      - run: npm install -g yarn
+
+      - name: Install dependencies
+        run: yarn install --ignore-engines
+
+      - name: Regenerate the ABI
+        run: |
+          solc --version
+          chmod +x ./bridge/contracts/abi-creator.sh ./loan/contracts/abi-creator.sh ./shared/contracts/abi-creator.sh
+          ./bridge/contracts/abi-creator.sh
+          ./loan/contracts/abi-creator.sh
+          ./shared/contracts/abi-creator.sh
+
+      - name: Check for mismatch
+        run: |
+          echo "========== DEBUG DEBUG DEBUG =========="
+          git status --short -- bridge/contracts/abi loan/contracts/abi shared/contracts/abi
+          git diff -- bridge/contracts/abi loan/contracts/abi shared/contracts/abi
+          echo "======================================="
+
+          if [ -n "$(git status --short -- bridge/contracts/abi loan/contracts/abi shared/contracts/abi)" ]; then
+              echo "FAIL: found ABI mismatch on disk vs. freshly generated from source"
+              echo "TODO: update ABI on disk and commit the changes to git"
+              exit 1
+          else
+              echo "PASS: ABI on disk matches freshly generated from source"
+              exit 0
+          fi

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a2a1d" />
+      <stop offset="100%" stop-color="#04120c" />
+    </linearGradient>
+    <linearGradient id="neonLime" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4ff55" />
+      <stop offset="100%" stop-color="#99e820" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Outer Shield Badge -->
+  <path d="M32 4L54 12V28C54 44 44.5 54.5 32 60C19.5 54.5 10 44 10 28V12L32 4Z" fill="url(#shieldGrad)" stroke="#bbfb3b" stroke-width="2.5" stroke-linejoin="round" />
+
+  <!-- Inner Geometric P & Node Knot -->
+  <!-- Stylized Monogram P with Attestation Knot -->
+  <path d="M25 18V46M25 18H36C40.5 18 43.5 21 43.5 25.5C43.5 30 40.5 33 36 33H25" stroke="url(#neonLime)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)" />
+  
+  <!-- Cryptographic Verification Dot / Spark -->
+  <circle cx="36" cy="25.5" r="2.5" fill="#071912" stroke="#bbfb3b" stroke-width="1.5" />
+  <circle cx="25" cy="46" r="2.2" fill="#bbfb3b" />
+</svg>

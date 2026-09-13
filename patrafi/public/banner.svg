@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 460" width="100%" height="100%">
+  <defs>
+    <!-- Background Linear & Radial Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040906"/>
+      <stop offset="50%" stop-color="#07140e"/>
+      <stop offset="100%" stop-color="#030805"/>
+    </linearGradient>
+
+    <radialGradient id="glowLime" cx="20%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#bbfb3b" stop-opacity="0.22"/>
+      <stop offset="50%" stop-color="#10b981" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#07140e" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="glowCyan" cx="80%" cy="70%" r="60%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.18"/>
+      <stop offset="60%" stop-color="#0ea5e9" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#030805" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Text Gradients -->
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="45%" stop-color="#f4ffe0"/>
+      <stop offset="100%" stop-color="#bbfb3b"/>
+    </linearGradient>
+
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#bbfb3b"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+
+    <linearGradient id="badgeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="rgba(187, 251, 59, 0.15)"/>
+      <stop offset="100%" stop-color="rgba(16, 185, 129, 0.08)"/>
+    </linearGradient>
+
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255, 255, 255, 0.07)"/>
+      <stop offset="100%" stop-color="rgba(255, 255, 255, 0.02)"/>
+    </linearGradient>
+
+    <!-- Drop Shadows & Filters -->
+    <filter id="neonGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="badgeShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+
+    <!-- Grid Pattern -->
+    <pattern id="cyberGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(187, 251, 59, 0.04)" stroke-width="1"/>
+      <circle cx="40" cy="40" r="1" fill="rgba(187, 251, 59, 0.15)"/>
+    </pattern>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1280" height="460" rx="16" fill="url(#bgGrad)"/>
+  <rect width="1280" height="460" rx="16" fill="url(#cyberGrid)"/>
+  <rect width="1280" height="460" rx="16" fill="url(#glowLime)"/>
+  <rect width="1280" height="460" rx="16" fill="url(#glowCyan)"/>
+
+  <!-- Border Frame -->
+  <rect x="1.5" y="1.5" width="1277" height="457" rx="15" fill="none" stroke="rgba(187, 251, 59, 0.25)" stroke-width="1.5"/>
+
+  <!-- Top Status Bar & Network Badges -->
+  <g transform="translate(60, 48)">
+    <!-- Active Network Badge -->
+    <rect x="0" y="0" width="190" height="32" rx="16" fill="url(#badgeGrad)" stroke="rgba(187, 251, 59, 0.4)" stroke-width="1" filter="url(#badgeShadow)"/>
+    <circle cx="16" cy="16" r="4.5" fill="#bbfb3b" filter="url(#neonGlow)"/>
+    <text x="30" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#bbfb3b" letter-spacing="1">CREDITCOIN CC3</text>
+
+    <!-- Chain ID Badge -->
+    <rect x="202" y="0" width="135" height="32" rx="16" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1"/>
+    <text x="216" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#94a3b8">CHAIN ID </text>
+    <text x="274" y="21" font-family="'SF Mono', Menlo, Consolas, Monaco, monospace" font-size="12" font-weight="700" fill="#ffffff">102031</text>
+
+    <!-- Precompile Protocol Engine Badge -->
+    <rect x="349" y="0" width="220" height="32" rx="16" fill="rgba(56, 189, 248, 0.1)" stroke="rgba(56, 189, 248, 0.35)" stroke-width="1"/>
+    <circle cx="365" cy="16" r="4" fill="#38bdf8"/>
+    <text x="379" y="21" font-family="'SF Mono', Menlo, Consolas, Monaco, monospace" font-size="11" font-weight="700" fill="#38bdf8">PRECOMPILE 0x0FD2 VERIFIED</text>
+  </g>
+
+  <!-- Left Main Brand Typography -->
+  <g transform="translate(60, 155)">
+    <!-- Subtitle Category -->
+    <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="800" fill="#bbfb3b" letter-spacing="3.5" text-transform="uppercase">
+      SOVEREIGN CROSS-CHAIN CREDIT PROTOCOL
+    </text>
+
+    <!-- Main Title -->
+    <text x="0" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="76" font-weight="900" fill="url(#titleGrad)" letter-spacing="-2">
+      PatraFi
+    </text>
+
+    <!-- Monogram Glyph Symbol -->
+    <text x="305" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="42" font-weight="900" fill="#bbfb3b">
+      .
+    </text>
+
+    <!-- Tagline Description -->
+    <text x="0" y="112" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#cbd5e1" letter-spacing="-0.2">
+      Zero-Oracle Lending, Autonomous Liquidation Shield &amp; Cryptographic Settlement
+    </text>
+    <text x="0" y="138" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#94a3b8">
+      Powered by Creditcoin Substrate Light-Client Attestations &amp; Pātratā Trust Scoring
+    </text>
+  </g>
+
+  <!-- Right Graphic: Architectural Isometric Shield & Hexagonal Node -->
+  <g transform="translate(930, 210)">
+    <!-- Pulsing Outer Hexagon Ring -->
+    <polygon points="0,-130 112,-65 112,65 0,130 -112,65 -112,-65" fill="none" stroke="rgba(187, 251, 59, 0.18)" stroke-width="2" stroke-dasharray="8 6"/>
+    <polygon points="0,-115 99,-57 99,57 0,115 -99,57 -99,-57" fill="rgba(11, 28, 19, 0.75)" stroke="url(#accentGrad)" stroke-width="2" filter="url(#neonGlow)"/>
+
+    <!-- Inner Shield Geometry -->
+    <path d="M 0,-65 L 55,-35 L 55,20 C 55,55 0,85 0,85 C 0,85 -55,55 -55,20 L -55,-35 Z" fill="rgba(6, 17, 12, 0.9)" stroke="#bbfb3b" stroke-width="2.5"/>
+    
+    <!-- Shield Core Emblem: Monogram 'P' + Stylized Proof Cross -->
+    <path d="M -18,-35 L 12,-35 C 24,-35 32,-27 32,-15 C 32,-3 24,5 12,5 L -8,5 L -8,38 L -18,38 Z M -8,-23 L -8,-7 L 10,-7 C 16,-7 20,-10 20,-15 C 20,-20 16,-23 10,-23 Z" fill="#bbfb3b"/>
+
+    <!-- Orbital Attestation Proof Dots -->
+    <circle cx="0" cy="-130" r="5" fill="#bbfb3b" filter="url(#neonGlow)"/>
+    <circle cx="112" cy="-65" r="5" fill="#38bdf8"/>
+    <circle cx="112" cy="65" r="5" fill="#10b981"/>
+    <circle cx="0" cy="130" r="5" fill="#bbfb3b"/>
+    <circle cx="-112" cy="65" r="5" fill="#38bdf8"/>
+    <circle cx="-112" cy="-65" r="5" fill="#10b981"/>
+
+    <!-- Floating Hash Micro-labels -->
+    <rect x="-170" y="-120" width="105" height="22" rx="4" fill="rgba(6, 13, 9, 0.85)" stroke="rgba(187, 251, 59, 0.3)" stroke-width="1"/>
+    <text x="-163" y="-105" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="10" font-weight="600" fill="#bbfb3b">0x0FD2 PASS</text>
+
+    <rect x="75" y="80" width="115" height="22" rx="4" fill="rgba(6, 13, 9, 0.85)" stroke="rgba(56, 189, 248, 0.3)" stroke-width="1"/>
+    <text x="82" y="95" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="10" font-weight="600" fill="#38bdf8">PROOF VALID</text>
+  </g>
+
+  <!-- Bottom Features Pill Grid -->
+  <g transform="translate(60, 362)">
+    <!-- Pill 1: Deterministic Cross-Chain Verification -->
+    <rect x="0" y="0" width="260" height="52" rx="10" fill="url(#cardGrad)" stroke="rgba(255, 255, 255, 0.09)" stroke-width="1"/>
+    <circle cx="26" cy="26" r="12" fill="rgba(187, 251, 59, 0.15)"/>
+    <path d="M 22 26 L 25 29 L 31 22" fill="none" stroke="#bbfb3b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="48" y="23" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#ffffff">Zero-Oracle Verifier</text>
+    <text x="48" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#94a3b8">Cryptographic Proof Engine</text>
+
+    <!-- Pill 2: Pātratā Score Engine -->
+    <rect x="275" y="0" width="260" height="52" rx="10" fill="url(#cardGrad)" stroke="rgba(255, 255, 255, 0.09)" stroke-width="1"/>
+    <circle cx="301" cy="26" r="12" fill="rgba(16, 185, 129, 0.15)"/>
+    <path d="M 297 30 L 297 22 M 301 30 L 301 18 M 305 30 L 305 25" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
+    <text x="323" y="23" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#ffffff">Pātratā Risk Model</text>
+    <text x="323" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#94a3b8">Dynamic Sovereign Underwriting</text>
+
+    <!-- Pill 3: FlashShield Rescue -->
+    <rect x="550" y="0" width="260" height="52" rx="10" fill="url(#cardGrad)" stroke="rgba(255, 255, 255, 0.09)" stroke-width="1"/>
+    <circle cx="576" cy="26" r="12" fill="rgba(56, 189, 248, 0.15)"/>
+    <path d="M 576 18 L 583 22 L 583 27 C 583 31 576 34 576 34 C 576 34 569 31 569 27 L 569 22 Z" fill="none" stroke="#38bdf8" stroke-width="1.8"/>
+    <text x="598" y="23" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#ffffff">FlashShield Liquidation</text>
+    <text x="598" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#94a3b8">On-Chain Solvency Interceptor</text>
+
+    <!-- Pill 4: Substrate Precompile Integration -->
+    <rect x="825" y="0" width="260" height="52" rx="10" fill="url(#cardGrad)" stroke="rgba(255, 255, 255, 0.09)" stroke-width="1"/>
+    <circle cx="851" cy="26" r="12" fill="rgba(245, 158, 11, 0.15)"/>
+    <path d="M 845 26 L 851 20 L 857 26 L 851 32 Z" fill="none" stroke="#f59e0b" stroke-width="1.8"/>
+    <text x="873" y="23" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#ffffff">Creditcoin Native EVM</text>
+    <text x="873" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#94a3b8">Direct 0x0FD2 Attestations</text>
+  </g>
+</svg>

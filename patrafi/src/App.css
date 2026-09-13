@@ -1,0 +1,75 @@
+/* PatraFi Application Layout & Section Styles */
+
+.app-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Section Common Spacing */
+.section-padding {
+  padding: 68px 0;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 44px 0;
+  }
+}
+
+/* Section Header Block */
+.section-header {
+  margin-bottom: 36px;
+  max-width: 680px;
+}
+
+.section-header h2 {
+  font-size: clamp(1.9rem, 3.8vw, 2.6rem);
+  color: #ffffff;
+  margin-bottom: 12px;
+  line-height: 1.18;
+}
+
+.section-header p {
+  font-size: 1.02rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Mobile Nav Drawer */
+.mobile-nav-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 8, 5, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 998;
+  transition: opacity 0.25s ease;
+}
+
+.mobile-nav-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 80%;
+  max-width: 340px;
+  background: #091a12;
+  border-left: 1px solid var(--lime-border);
+  z-index: 999;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.7);
+}
