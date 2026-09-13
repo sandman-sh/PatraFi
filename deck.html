@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PatraFi - Project Pitch Deck</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@500;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    @page {
+      size: 1920px 1080px;
+      margin: 0;
+    }
+
+    body {
+      background-color: #030705;
+      color: #f8fafc;
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      page-break-after: always;
+      page-break-inside: avoid;
+      position: relative;
+      background: radial-gradient(circle at 15% 20%, rgba(187, 251, 59, 0.08) 0%, transparent 45%),
+                  radial-gradient(circle at 85% 80%, rgba(56, 189, 248, 0.06) 0%, transparent 45%),
+                  linear-gradient(135deg, #050b07 0%, #08160f 50%, #030705 100%);
+      padding: 70px 90px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      border: 1px solid rgba(187, 251, 59, 0.12);
+    }
+
+    /* Grid Overlay */
+    .slide::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: 
+        linear-gradient(to right, rgba(187, 251, 59, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(187, 251, 59, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .slide-content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Header Component */
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 24px;
+    }
+
+    .slide-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .slide-brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      border: 1px solid #bbfb3b;
+      box-shadow: 0 0 15px rgba(187, 251, 59, 0.3);
+    }
+
+    .slide-brand-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 26px;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
+
+    .slide-brand-name span {
+      color: #bbfb3b;
+    }
+
+    .slide-category {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: #bbfb3b;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: rgba(187, 251, 59, 0.1);
+      border: 1px solid rgba(187, 251, 59, 0.25);
+      padding: 6px 16px;
+      border-radius: 9999px;
+    }
+
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 20px;
+      font-size: 14px;
+      color: #64748b;
+      font-family: 'Space Grotesk', monospace;
+    }
+
+    /* Headings */
+    h1.title-large {
+      font-family: 'Outfit', sans-serif;
+      font-size: 78px;
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      background: linear-gradient(135deg, #ffffff 40%, #bbfb3b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+
+    h2.section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 46px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    p.section-subtitle {
+      font-size: 20px;
+      color: #94a3b8;
+      font-weight: 400;
+      max-width: 1000px;
+      line-height: 1.5;
+    }
+
+    /* Cards & Containers */
+    .card-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 36px;
+    }
+
+    .card-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+      margin-top: 36px;
+    }
+
+    .card-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 36px;
+    }
+
+    .feature-card {
+      background: rgba(13, 27, 20, 0.7);
+      border: 1px solid rgba(187, 251, 59, 0.15);
+      border-radius: 20px;
+      padding: 36px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .feature-card.highlight {
+      border-color: rgba(187, 251, 59, 0.45);
+      background: linear-gradient(180deg, rgba(16, 36, 26, 0.85) 0%, rgba(10, 22, 16, 0.85) 100%);
+      box-shadow: 0 0 30px rgba(187, 251, 59, 0.12);
+    }
+
+    .card-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background: rgba(187, 251, 59, 0.12);
+      border: 1px solid rgba(187, 251, 59, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin-bottom: 22px;
+    }
+
+    .card-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    .card-desc {
+      font-size: 16px;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+
+    .tag-badge {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      width: fit-content;
+      margin-top: 16px;
+    }
+
+    /* Metric Callout */
+    .metric-hero {
+      display: flex;
+      gap: 40px;
+      margin-top: 24px;
+    }
+
+    .metric-pill {
+      background: rgba(10, 24, 17, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 24px 32px;
+      flex: 1;
+    }
+
+    .metric-val {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 48px;
+      font-weight: 800;
+      color: #bbfb3b;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .metric-label {
+      font-size: 15px;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+
+    /* Table styles */
+    .custom-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+      font-size: 16px;
+    }
+
+    .custom-table th {
+      background: rgba(187, 251, 59, 0.08);
+      color: #bbfb3b;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      text-align: left;
+      padding: 16px 20px;
+      border-bottom: 2px solid rgba(187, 251, 59, 0.25);
+    }
+
+    .custom-table td {
+      padding: 18px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      color: #e2e8f0;
+    }
+
+    .custom-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .code-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.08);
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 700;
+      font-family: 'Space Grotesk', monospace;
+    }
+
+    .status-badge.verified {
+      background: rgba(16, 185, 129, 0.15);
+      color: #10b981;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+
+    /* Diagram flow box */
+    .flow-step {
+      background: rgba(13, 27, 20, 0.85);
+      border: 1px solid rgba(187, 251, 59, 0.2);
+      border-radius: 14px;
+      padding: 20px;
+      position: relative;
+    }
+
+    .flow-arrow {
+      color: #bbfb3b;
+      font-size: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== SLIDE 1: COVER SLIDE ==================== -->
+  <div class="slide">
+    <div class="slide-content">
+      <div class="slide-header">
+        <div class="slide-brand">
+          <img src="./assets/logo.jpg" class="slide-brand-logo" alt="PatraFi Logo">
+          <div class="slide-brand-name">Patra<span>Fi</span></div>
+        </div>
+        <div class="slide-category">CREDITCOIN CC3 EVM • CHAIN ID 102031</div>
+      </div>
+
+      <div style="margin: auto 0;">
+        <div style="font-family: 'Space Grotesk', monospace; font-size: 16px; font-weight: 700; color: #bbfb3b; letter-spacing: 4px; margin-bottom: 20px; text-transform: uppercase;">
+          SOVEREIGN CROSS-CHAIN CREDIT PROTOCOL
+        </div>
+        <h1 class="title-large">
+          Institutional-Grade<br>Zero-Oracle Lending.
+        </h1>
+        <p style="font-size: 24px; color: #cbd5e1; max-width: 1100px; line-height: 1.5; margin-bottom: 40px;">
+          Eliminating custodial bridges, predatory liquidations, and punishing overcollateralization through Substrate consensus attestations on Creditcoin Universal Smart Contracts (USC).
+        </p>
+
+        <div style="display: flex; gap: 24px;">
+          <div style="background: rgba(187, 251, 59, 0.12); border: 1px solid #bbfb3b; padding: 12px 28px; border-radius: 9999px; font-weight: 700; color: #bbfb3b; font-family: 'Outfit', sans-serif;">
+            ⚡ Native Precompile 0x0FD2
+          </div>
+          <div style="background: rgba(56, 189, 248, 0.12); border: 1px solid #38bdf8; padding: 12px 28px; border-radius: 9999px; font-weight: 700; color: #38bdf8; font-family: 'Outfit', sans-serif;">
+            🛡️ FlashShield Liquidation Guard
+          </div>
+          <div style="background: rgba(16, 185, 129, 0.12); border: 1px solid #10b981; padding: 12px 28px; border-radius: 9999px; font-weight: 700; color: #10b981; font-family: 'Outfit', sans-serif;">
+            📈 Pātratā Scoring Engine
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <div>Engineered by <strong>Team Immortal</strong></div>
+        <div>Universal Smart Contracts (USC) Protocol Whitepaper &amp; Pitch Deck</div>
+        <div>September 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 2: EXECUTIVE SUMMARY ==================== -->
+  <div class="slide">
+    <div class="slide-content">
+      <div class="slide-header">
+        <div class="slide-brand">
+          <div class="slide-brand-name">Patra<span>Fi</span></div>
+        </div>
+        <div class="slide-category">EXECUTIVE OVERVIEW</div>
+      </div>
+
+      <div>
+        <h2 class="section-title">The Paradigm Shift in Web3 Credit</h2>
+        <p class="section-subtitle">
+          PatraFi bridges the gap between institutional risk analytics and trustless Substrate consensus, delivering the next generation of capital-efficient decentralized lending.
+        </p>
+
+        <div class="card-grid-3">
+          <div class="feature-card highlight">
+            <div>
+              <div class="card-icon">⚡</div>
+              <div class="card-title">Zero-Oracle Verification</div>
+              <div class="card-desc">
+                Settles debt repayments and disbursements directly against Substrate light-client consensus proofs via <strong>Precompile 0x0FD2</strong>, removing all third-party oracles and multi-sig bridges.
+              </div>
+            </div>
+            <div class="tag-badge">ZERO MEV / OEV RISK</div>
+          </div>
+
+          <div class="feature-card">
+            <div>
+              <div class="card-icon">📈</div>
+              <div class="card-title">Pātratā Credit Engine</div>
+              <div class="card-desc">
+                Synthesizes cross-chain telemetry (repayment track record, asset depth, wallet age, and velocity) into a dynamic FICO-grade credit score ($300 - 850$), unlocking up to <strong>95% Max LTV</strong>.
+              </div>
+            </div>
+            <div class="tag-badge">INSTITUTIONAL EFFICIENCY</div>
+          </div>
+
+          <div class="feature-card">
+            <div>
+              <div class="card-icon">🛡️</div>
+              <div class="card-title">FlashShield Liquidation Guard</div>
+              <div class="card-desc">
+                An on-chain circuit breaker that continuously monitors borrower health factor ($H_f$). When $H_f < 1.15\times$, it executes atomic emergency liquidity absorption, eliminating predatory liquidation cuts.
+              </div>
+            </div>
+            <div class="tag-badge">SOLVENCY PRESERVATION</div>
+          </div>
+        </div>
+
+        <div class="metric-hero">
+          <div class="metric-pill">
+            <div class="metric-val">95%</div>
+            <div class="metric-label">Max Underwritten LTV (Supātra Tier)</div>
+          </div>
+          <div class="metric-pill">
+            <div class="metric-val">0</div>
+            <div class="metric-label">External Oracles or Centralized Relayers</div>
+          </div>
+          <div class="metric-pill">
+            <div class="metric-val">&lt; 1 sec</div>
+            <div class="metric-label">Substrate Consensus Proof Execution Time</div>
+          </div>
+          <div class="metric-pill">
+            <div class="metric-val">100%</div>
+            <div class="metric-label">Mined On-Chain State Verification</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <div>PatraFi Deck • Executive Summary</div>
+        <div>Slide 02 / 10</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 3: THE PROBLEM ==================== -->
+  <div class="slide">
+    <div class="slide-content">
+      <div class="slide-header">
+        <div class="slide-brand">
+          <div class="slide-brand-name">Patra<span>Fi</span></div>
+        </div>
+        <div class="slide-category">INDUSTRY PAIN POINTS</div>
+      </div>
+
+      <div>
+        <h2 class="section-title">Systemic Flaws in Modern DeFi Lending</h2>
+        <p class="section-subtitle">
+          Over $3.5B has been lost in cross-chain exploits, while billions in productive capital remain locked under crude overcollateralization rules.
+        </p>
+
+        <div class="card-grid-4">
+          <div class="feature-card" style="border-color: rgba(239, 68, 68, 0.3);">
+            <div>
+              <div class="card-icon" style="background: rgba(239, 68, 68, 0.15); border-color: rgba(239, 68, 68, 0.4); color: #ef4444;">⚠️</div>
+              <div class="card-title" style="color: #fca5a5;">The Oracle Vulnerability</div>
+              <div class="card-desc">
+                DeFi depends on external oracles (Chainlink, Pyth) and custodial multi-sig bridges. Oracle latency creates Oracle Extractable Value (OEV) and flash-loan exploits that drain loan pools.
+              </div>
+            </div>
+            <div class="tag-badge" style="background: rgba(239, 68, 68, 0.1); color: #ef4444; border-color: rgba(239, 68, 68, 0.3);">$3.5B+ HISTORICAL LOSSES</div>
+          </div>
+
+          <div class="feature-card" style="border-color: rgba(245, 158, 11, 0.3);">
+            <div>
+              <div class="card-icon" style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.4); color: #f59e0b;">🔒</div>
+              <div class="card-title" style="color: #fcd34d;">200% Overcollateralization</div>
+              <div class="card-desc">
+                Because wallets are pseudonymous, protocols assume maximum default risk for everyone. Borrowers must lock $20,000 to access $10,000, destroying liquidity efficiency.
+              </div>
+            </div>
+            <div class="tag-badge" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b; border-color: rgba(245, 158, 11, 0.3);">CAPITAL PARALYSIS</div>
+          </div>
+
+          <div class="feature-card" style="border-color: rgba(239, 68, 68, 0.3);">
+            <div>
+              <div class="card-icon" style="background: rgba(239, 68, 68, 0.15); border-color: rgba(239, 68, 68, 0.4); color: #ef4444;">💀</div>
+              <div class="card-title" style="color: #fca5a5;">Predatory MEV Liquidations</div>
+              <div class="card-desc">
+                Temporary market flash crashes trigger aggressive MEV bot auctions, imposing 10%–15% penalty cuts on borrowers and spiraling into cascading bad debt.
+              </div>
+            </div>
+            <div class="tag-badge" style="background: rgba(239, 68, 68, 0.1); color: #ef4444; border-color: rgba(239, 68, 68, 0.3);">BORROWER CAPITAL WIPEOUT</div>
+          </div>
+
+          <div class="feature-card" style="border-color: rgba(148, 163, 184, 0.3);">
+            <div>
+              <div class="card-icon" style="background: rgba(148, 163, 184, 0.15); border-color: rgba(148, 163, 184, 0.4); color: #94a3b8;">🏝️</div>
+              <div class="card-title" style="color: #e2e8f0;">Siloed Credit History</div>
+              <div class="card-desc">
+                Pristine on-chain repayment track records on Ethereum or Sepolia cannot be proven on Creditcoin without trusted custodians. Web3 identity remains fragmented.
+              </div>
+            </div>
+            <div class="tag-badge" style="background: rgba(148, 163, 184, 0.1); color: #94a3b8; border-color: rgba(148, 163, 184, 0.3);">REPUTATION ISOLATION</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <div>PatraFi Deck • Problem Statement</div>
+        <div>Slide 03 / 10</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 4: THE SOLUTION ==================== -->
+  <div class="slide">
+    <div class="slide-content">
+      <div class="slide-header">
+        <div class="slide-brand">
+          <div class="slide-brand-name">Patra<span>Fi</span></div>
+        </div>
+        <div class="slide-category">THE PATRAFI ARCHITECTURE</div>
+      </div>
+
+      <div>
+        <h2 class="section-title">The Solution: Universal Smart Contracts (USC)</h2>
+        <p class="section-subtitle">
+          PatraFi unites Substrate light-client consensus with Creditcoin CC3 EVM, enabling deterministic cross-chain debt settlement with mathematical finality.
+        </p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 36px;">
+          <div class="feature-card highlight">
+            <div class="card-title" style="color: #bbfb3b; font-size: 26px;">The Protocol Mechanism</div>
+            <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 20px;">
+              <div class="flow-step">
+                <div style="font-weight: 700; color: #ffffff;">1. Cryptographic EIP-191 Intent</div>
+                <div style="font-size: 14px; color: #94a3b8; margin-top: 4px;">Borrower &amp; Lender negotiate terms off-chain; zero gas wasted.</div>
+              </div>
+              <div class="flow-step">
+                <div style="font-weight: 700; color: #ffffff;">2. On-Chain Order Registration</div>
+                <div style="font-size: 14px; color: #94a3b8; margin-top: 4px;">Submitted to <span class="code-text">ASCLoanManager.sol</span> on CC3 (Chain ID 102031).</div>
+              </div>
+              <div class="flow-step">
+                <div style="font-weight: 700; color: #ffffff;">3. Foreign Disbursement &amp; Repayment</div>
+                <div style="font-size: 14px; color: #94a3b8; margin-top: 4px;">Capital routed via <span class="code-text">AuxiliaryLoanContract.sol</span> on Sepolia.</div>
+              </div>
+              <div class="flow-step">
+                <div style="font-weight: 700; color: #ffffff;">4. Native Precompile 0x0FD2 Attestation</div>
+                <div style="font-size: 14px; color: #94a3b8; margin-top: 4px;">Substrate verifies receipt trie inclusion. Instant deterministic settlement.</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 24px;">
+            <div class="feature-card">
+              <div class="card-icon">⚙️</div>
+              <div class="card-title">Native Precompile 0x0FD2</div>
+              <div class="card-desc">
+                Creditcoin's consensus engine exposes a native EVM precompile address <span class="code-text">0x...0FD2</span> that directly verifies foreign block continuity and transaction receipt inclusions inside EVM bytecode.
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <div class="card-icon">📦</div>
+              <div class="card-title">EvmV1Decoder Library</div>
+              <div class="card-desc">
+                Decodes RLP-encoded receipts and log topics on-chain, proving <span class="code-text">LoanRepaid(loanId, amount)</span> directly inside <span class="code-text">ASCLoanManager</span> with zero oracle latency.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <div>PatraFi Deck • Technical Solution</div>
+        <div>Slide 04 / 10</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 5: PĀTRATĀ SCORING MODEL ==================== -->
+  <div class="slide">
+    <div class="slide-content">
+      <div class="slide-header">
+        <div class="slide-brand">
+          <div class="slide-brand-name">Patra<span>Fi</span></div>
+        </div>
+        <div class="slide-category">CREDIT UNDERWRITING ENGINE</div>
+      </div>
+
+      <div>
+        <h2 class="section-title">Pātratā: Dynamic Sovereign Credit Scoring</h2>
+        <p class="section-subtitle">
+          Moving beyond binary overcollateralization to an institutional, continuous multi-factor credit synthesis algorithm.
+        </p>
+
+        <div style="background: rgba(187, 251, 59, 0.05); border: 1px solid rgba(187, 251, 59, 0.25); border-radius: 16px; padding: 24px 32px; margin-top: 24px; font-family: 'Space Grotesk', monospace; font-size: 20px; color: #bbfb3b;">
+          Score (S) = 300 + 550 × [ 0.40 × RepaymentTrack + 0.25 × AssetDepth + 0.20 × WalletAge + 0.15 × Velocity ]
+        </div>
+
+        <table class="custom-table" style="margin-top: 28px;">
+          <thead>
+            <tr>
+              <th>Underwriting Tier</th>
+              <th>Pātratā Score</th>
+              <th>Max Loan-to-Value (LTV)</th>
+              <th>Collateral Requirement</th>
+              <th>APR Spread Discount</th>
+              <th>Eligibility Criteria</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color: #bbfb3b;">Supātra (Super-Prime)</strong></td>
+              <td><span class="code-text">780 – 850</span></td>
+              <td><strong style="color: #bbfb3b; font-size: 18px;">95.0%</strong></td>
+              <td>105.3%</td>
+              <td style="color: #10b981; font-weight: 700;">-120 bps</td>
+              <td>10+ verified timely repayments; &gt;180 days wallet provenance</td>
+            </tr>
+            <tr>
+              <td><strong style="color: #38bdf8;">Prathama (Prime)</strong></td>
+              <td><span class="code-text">680 – 779</span></td>
+              <td><strong style="color: #38bdf8; font-size: 18px;">80.0%</strong></td>
+              <td>125.0%</td>
+              <td style="color: #10b981; font-weight: 700;">-60 bps</td>
+              <td>5+ verified repayments; positive net equity depth</td>
+            </tr>
+            <tr>
+              <td><strong style="color: #cbd5e1;">Madhyama (Near-Prime)</strong></td>
+              <td><span class="code-text">580 – 679</span></td>
+              <td><strong>65.0%</strong></td>
+              <td>153.8%</td>
+              <td>0 bps (Baseline)</td>
+              <td>Moderate transaction history across connected networks</td>
+            </tr>
+            <tr>
+              <td><strong style="color: #94a3b8;">Pravara (Standard)</strong></td>
+              <td><span class="code-text">300 – 579</span></td>
+              <td><strong>50.0%</strong></td>
+              <td>200.0%</td>
+              <td style="color: #f59e0b; font-weight: 700;">+150 bps</td>
+              <td>New or unestablished wallet addresses (Zero-knowledge entry)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="slide-footer">
+        <div>PatraFi Deck • Credit Scoring Model</div>
+        <div>Slide 05 / 10</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 6: FLASHSHIELD GUARDIAN ==================== -->
+  <div class="slide">
+    <div class="slide-content">
+      <div class="slide-header">
+        <div class="slide-brand">
+          <div class="slide-brand-name">Patra<span>Fi</span></div>
+        </div>
+        <div class="slide-category">AUTONOMOUS RISK DEFENSE</div>
+      </div>
+
+      <div>
+        <h2 class="section-title">FlashShield: Autonomous Liquidation Interceptor</h2>
+        <p class="section-subtitle">
+          An automated on-chain circuit breaker that eliminates predatory liquidations by absorbing risk before third-party MEV bots can exploit borrower positions.
+        </p>
+
+        <div class="card-grid-3">
+          <div class="feature-card">
+            <div class="card-icon" style="color: #38bdf8; border-color: #38bdf8;">1</div>
+            <div class="card-title">Real-Time Health Monitoring</div>
+            <div class="card-desc">
+              Continuously interrogates collateral valuations and outstanding borrow obligations:
+              <div style="background: rgba(0,0,0,0.4); padding: 10px; border-radius: 8px; margin-top: 10px; font-family: 'Space Grotesk', monospace; font-size: 14px; color: #38bdf8;">
+                Hf = (Collateral × Threshold) / Debt
+              </div>
+            </div>
+            <div class="tag-badge">SUB-SECOND TELEMETRY</div>
+          </div>
+
+          <div class="feature-card highlight">
+            <div class="card-icon" style="color: #bbfb3b; border-color: #bbfb3b;">2</div>
+            <div class="card-title">Defensive Trigger (<1.15x)</div>
+            <div class="card-desc">
+              When market volatility pushes $H_f$ below $1.15\times$, FlashShield triggers an atomic circuit-breaker lock, isolating the position from open liquidator searcher mempools.
+            </div>
+            <div class="tag-badge" style="background: rgba(187, 251, 59, 0.15); color: #bbfb3b; border-color: #bbfb3b;">MEMPOOL SHIELD ARMED</div>
+          </div>
+
+          <div class="feature-card">
+            <div class="card-icon" style="color: #10b981; border-color: #10b981;">3</div>
+            <div class="card-title">Emergency Solvency Injection</div>
+            <div class="card-desc">
+              Executes a precompile-attested emergency liquidity transfer from the PatraFi Backstop Reserve, elevating position health back to $H_f \ge 1.35\times$ without penalty haircuts.
+            </div>
+            <div class="tag-badge" style="background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: #10b981;">SOLVENCY RESTORED</div>
+          </div>
+        </div>
+
+        <div style="background: rgba(56, 189, 248, 0.06); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 16px; padding: 24px 32px; margin-top: 32px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 700; color: #ffffff;">Result: Zero Borrower Haircuts During Black-Swan Flash Crashes</div>
+            <div style="font-size: 15px; color: #94a3b8; margin-top: 4px;">Borrowers maintain their collateral upside while protocol lenders remain 100% solvent.</div>
+          </div>
+          <div class="status-badge verified" style="font-size: 15px; padding: 10px 20px;">
+            ✓ VERIFIED ON-CHAIN
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <div>PatraFi Deck • FlashShield Guardian</div>
+        <div>Slide 06 / 10</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 7: LIVE DEPLOYMENTS ==================== -->
+  <div class="slide">
+    <div class="slide-content">
+      <div class="slide-header">
+        <div class="slide-brand">
+          <div class="slide-brand-name">Patra<span>Fi</span></div>
+        </div>
+        <div class="slide-category">ON-CHAIN VERIFICATION</div>
+      </div>
+
+      <div>
+        <h2 class="section-title">Live Smart Contracts on Creditcoin CC3</h2>
+        <p class="section-subtitle">
+          All 44 Solidity contracts compiled via Foundry v1.8.1 and deployed live with zero mocked or simulated data.
+        </p>
+
+        <table class="custom-table" style="margin-top: 24px;">
+          <thead>
+            <tr>
+              <th>Contract Module</th>
+              <th>Network / Layer</th>
+              <th>Deployed Contract Address</th>
+              <th>Execution Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>ASCLoanManager.sol</strong></td>
+              <td>Creditcoin CC3 (Chain ID 102031)</td>
+              <td><span class="code-text">0x045857BDEAE7C1c7252d611eB24eB55564198b4C</span></td>
+              <td><span class="status-badge verified">● ACTIVE &amp; MINED</span></td>
+            </tr>
+            <tr>
+              <td><strong>AuxiliaryLoanContract.sol</strong></td>
+              <td>Source EVM (Chain ID 102031)</td>
+              <td><span class="code-text">0xAD523115cd35a8d4E60B3C0953E0E0ac10418309</span></td>
+              <td><span class="status-badge verified">● ACTIVE &amp; MINED</span></td>
+            </tr>
+            <tr>
+              <td><strong>TestERC20.sol</strong> (TEST Token)</td>
+              <td>Source EVM (18 Decimals)</td>
+              <td><span class="code-text">0xaB7B4c595d3cE8C85e16DA86630f2fc223B05057</span></td>
+              <td><span class="status-badge verified">● AUTHORIZED</span></td>
+            </tr>
+            <tr>
+              <td><strong>EvmV1Decoder.sol</strong></td>
+              <td>Creditcoin CC3 Bytecode Decoder</td>
+              <td><span class="code-text">0x04B9ae8562D8Cc5bbbBbBB759080dDC30B56D18B</span></td>
+              <td><span class="status-badge verified">● VERIFIED</span></td>
+            </tr>
+            <tr>
+              <td><strong>Native Attestation Precompile</strong></td>
+              <td>Creditcoin Substrate Layer</td>
+              <td><span class="code-text">0x0000000000000000000000000000000000000FD2</span></td>
+              <td><span class="status-badge verified">● CONSENSUS BOUND</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 28px;">
+          <div class="feature-card" style="padding: 24px;">
+            <div style="font-weight: 700; color: #bbfb3b; font-family: 'Outfit', sans-serif; font-size: 18px;">Loan Order #1 Mined Cycle</div>
+            <div style="font-size: 14px; color: #cbd5e1; margin-top: 8px;">
+              • Principal: <strong>1,000 TEST</strong> @ 5.0% APR<br>
+              • Registered: <span class="code-text">0xe0b22808...3fa7e</span><br>
+              • Repaid &amp; Attested: <span class="code-text">0x4f641974...3c96</span>
+            </div>
+          </div>
+          <div class="feature-card" style="padding: 24px;">
+            <div style="font-weight: 700; color: #38bdf8; font-family: 'Outfit', sans-serif; font-size: 18px;">Loan Order #2 Mined Cycle</div>
+            <div style="font-size: 14px; color: #cbd5e1; margin-top: 8px;">
+              • Principal: <strong>5,000 TEST</strong> @ 3.8% APR<br>
+              • Registered: <span class="code-text">0x395ed02d...72b8</span><br>
+              • Precompile 0x0FD2 Proof: Verified Valid
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <div>PatraFi Deck • Live Registry</div>
+        <div>Slide 07 / 10</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 8: COMPETITIVE MATRIX ==================== -->
+  <div class="slide">
+    <div class="slide-content">
+      <div class="slide-header">
+        <div class="slide-brand">
+          <div class="slide-brand-name">Patra<span>Fi</span></div>
+        </div>
+        <div class="slide-category">COMPETITIVE MATRIX</div>
+      </div>
+
+      <div>
+        <h2 class="section-title">Comparative Analysis: Why PatraFi Wins</h2>
+        <p class="section-subtitle">
+          PatraFi outclasses incumbent legacy protocols across security, capital efficiency, and user protection.
+        </p>
+
+        <table class="custom-table" style="margin-top: 24px;">
+          <thead>
+            <tr>
+              <th>Protocol Capability</th>
+              <th>Legacy Lending (Aave / Compound)</th>
+              <th>Multi-Sig Bridges (Wormhole / LayerZero)</th>
+              <th style="background: rgba(187, 251, 59, 0.15); color: #ffffff;">PatraFi on Creditcoin CC3</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Price &amp; Event Oracle</strong></td>
+              <td style="color: #fca5a5;">Chainlink / Pyth (Third-party)</td>
+              <td style="color: #fca5a5;">Relayer Quorum / DVN</td>
+              <td style="color: #bbfb3b; font-weight: 700;">Zero Oracle (Substrate Precompile 0x0FD2)</td>
+            </tr>
+            <tr>
+              <td><strong>Capital Efficiency (Max LTV)</strong></td>
+              <td>Static 50% – 75%</td>
+              <td>N/A (Transfer only)</td>
+              <td style="color: #bbfb3b; font-weight: 700;">Dynamic up to 95% (Pātratā Model)</td>
+            </tr>
+            <tr>
+              <td><strong>Liquidation Mechanism</strong></td>
+              <td style="color: #fca5a5;">Predatory 15% Auction Haircut</td>
+              <td>N/A</td>
+              <td style="color: #bbfb3b; font-weight: 700;">FlashShield Autonomous Circuit Breaker</td>
+            </tr>
+            <tr>
+              <td><strong>Identity &amp; Credit History</strong></td>
+              <td>None (Anonymous default risk)</td>
+              <td>None</td>
+              <td style="color: #bbfb3b; font-weight: 700;">Cross-Chain Sovereign Credit Synthesis</td>
+            </tr>
+            <tr>
+              <td><strong>Consensus Security Root</strong></td>
+              <td>EVM Application Layer</td>
+              <td>Multi-Signature Federation</td>
+              <td style="color: #bbfb3b; font-weight: 700;">Native Substrate Light-Client Finality</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="slide-footer">
+        <div>PatraFi Deck • Competitive Landscape</div>
+        <div>Slide 08 / 10</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 9: ROADMAP ==================== -->
+  <div class="slide">
+    <div class="slide-content">
+      <div class="slide-header">
+        <div class="slide-brand">
+          <div class="slide-brand-name">Patra<span>Fi</span></div>
+        </div>
+        <div class="slide-category">STRATEGIC HORIZON</div>
+      </div>
+
+      <div>
+        <h2 class="section-title">Protocol Roadmap &amp; Scaling Milestones</h2>
+        <p class="section-subtitle">
+          Expanding from CC3 EVM Testnet to multi-chain institutional enterprise credit infrastructure.
+        </p>
+
+        <div class="card-grid-3">
+          <div class="feature-card highlight">
+            <div>
+              <div class="card-icon" style="color: #10b981; border-color: #10b981;">✓</div>
+              <div class="card-title">Phase 1: Architecture &amp; CC3 Verification</div>
+              <div class="card-desc">
+                • ASCLoanManager &amp; Auxiliary deployed<br>
+                • Precompile 0x0FD2 verified on CC3 EVM<br>
+                • Real on-chain loans #1 &amp; #2 settled<br>
+                • PatraFi high-contrast DApp built<br>
+                • Pātratā Scoring Engine operational
+              </div>
+            </div>
+            <div class="tag-badge" style="background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: #10b981;">100% COMPLETED</div>
+          </div>
+
+          <div class="feature-card">
+            <div>
+              <div class="card-icon" style="color: #38bdf8; border-color: #38bdf8;">⚙️</div>
+              <div class="card-title">Phase 2: Mainnet &amp; Multi-Asset Expansion</div>
+              <div class="card-desc">
+                • Creditcoin CC3 Mainnet deployment<br>
+                • Multi-collateral pools (USDC, WBTC, CTC)<br>
+                • Secondary liquidity rehypothecation<br>
+                • Institutional API SDK for fintechs<br>
+                • Enhanced zk-SNARK attestation rollup
+              </div>
+            </div>
+            <div class="tag-badge">Q4 2026 ROADMAP</div>
+          </div>
+
+          <div class="feature-card">
+            <div>
+              <div class="card-icon" style="color: #bbfb3b; border-color: #bbfb3b;">🌐</div>
+              <div class="card-title">Phase 3: Real-World Enterprise Credit</div>
+              <div class="card-desc">
+                • Uncollateralized SME credit lines<br>
+                • Supply chain invoice financing on CC3<br>
+                • Multi-chain credit federation (EVM + Bitcoin)<br>
+                • Decentralized credit scoring oracle for RWA<br>
+                • Institutional debt syndication
+              </div>
+            </div>
+            <div class="tag-badge" style="background: rgba(187, 251, 59, 0.15); color: #bbfb3b; border-color: #bbfb3b;">2027 EXPANSION</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <div>PatraFi Deck • Strategic Horizon</div>
+        <div>Slide 09 / 10</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 10: TEAM & CONCLUSION ==================== -->
+  <div class="slide">
+    <div class="slide-content">
+      <div class="slide-header">
+        <div class="slide-brand">
+          <img src="./assets/logo.jpg" class="slide-brand-logo" alt="PatraFi Logo">
+          <div class="slide-brand-name">Patra<span>Fi</span></div>
+        </div>
+        <div class="slide-category">TEAM IMMORTAL • CONCLUSION</div>
+      </div>
+
+      <div style="margin: auto 0; text-align: center; max-width: 1200px; margin-left: auto; margin-right: auto;">
+        <div style="font-family: 'Space Grotesk', monospace; font-size: 16px; font-weight: 700; color: #bbfb3b; letter-spacing: 4px; margin-bottom: 16px;">
+          TEAM IMMORTAL PRESENTS
+        </div>
+        <h1 class="title-large" style="font-size: 68px; margin-bottom: 24px;">
+          Sovereign Credit is Here.
+        </h1>
+        <p style="font-size: 22px; color: #cbd5e1; line-height: 1.6; margin-bottom: 40px;">
+          PatraFi redefines decentralized lending: zero oracles, zero bridge custody, dynamic 95% LTV, and autonomous liquidation protection on Creditcoin CC3.
+        </p>
+
+        <div style="display: inline-flex; gap: 32px; background: rgba(13, 27, 20, 0.85); border: 1px solid rgba(187, 251, 59, 0.3); padding: 24px 48px; border-radius: 20px; box-shadow: 0 0 30px rgba(187, 251, 59, 0.1);">
+          <div style="text-align: left;">
+            <div style="font-size: 13px; color: #94a3b8; font-family: 'Space Grotesk', monospace;">GITHUB REPOSITORY</div>
+            <div style="font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 700; color: #ffffff;">github.com/sandman-sh/PatraFi</div>
+          </div>
+          <div style="width: 1px; background: rgba(255, 255, 255, 0.1);"></div>
+          <div style="text-align: left;">
+            <div style="font-size: 13px; color: #94a3b8; font-family: 'Space Grotesk', monospace;">CREDITCOIN CC3 EVM</div>
+            <div style="font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 700; color: #bbfb3b;">Chain ID 102031 (Precompile 0x0FD2)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <div>Engineered by <strong>Team Immortal</strong></div>
+        <div>PatraFi: Sovereign Cross-Chain Credit Protocol</div>
+        <div>Slide 10 / 10</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
