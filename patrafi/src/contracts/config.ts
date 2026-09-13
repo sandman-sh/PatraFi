@@ -1,14 +1,22 @@
 // Creditcoin CC3 Network Configuration & Live Protocol Contract Constants
 // 100% Real On-Chain EVM Integration (Zero Mocks / Zero Simulation)
 
+const isSecureRemoteContext =
+  typeof window !== 'undefined' &&
+  (window.location.protocol === 'https:' ||
+    (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'));
+
 export const NETWORKS = {
   CREDITCOIN_CC3: {
     chainId: 102031,
     chainIdHex: '0x18e8f',
     name: 'Creditcoin CC3 Testnet',
     shortName: 'Creditcoin CC3',
-    rpcUrl: 'http://127.0.0.1:8545',
+    rpcUrl: isSecureRemoteContext
+      ? 'https://rpc.cc3-testnet.creditcoin.network/'
+      : 'http://127.0.0.1:8545',
     fallbackRpcUrl: 'https://rpc.cc3-testnet.creditcoin.network/',
+
     currencySymbol: 'tCTC',
     currencyName: 'Testnet Creditcoin',
     decimals: 18,
